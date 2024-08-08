@@ -1,4 +1,3 @@
-# app/handlers.py
 import json
 
 from aiogram import F, Router
@@ -9,9 +8,10 @@ from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMar
 import app.keyboards as kb
 from app.states import SurveyStates
 
+import os
+
 router = Router()
 
-# Define available surveys for each language
 surveys = {
     "general_info": {"ru": "data/general_info_ru.json", "en": "data/general_info_en.json"},
     "nutrition": {"ru": "data/nutrition_ru.json", "en": "data/nutrition_en.json"},
@@ -30,7 +30,6 @@ surveys = {
 
 questions_data = {"ru": {}, "en": {}}
 
-# Load survey questions for both languages
 for survey, files in surveys.items():
     for lang, filename in files.items():
         try:
@@ -244,8 +243,8 @@ async def forward_results(callback_query: CallbackQuery, state: FSMContext):
     data = await state.get_data()
     user_responses = data.get("user_responses", [])
     user_name = f"{callback_query.from_user.first_name} {callback_query.from_user.last_name}"
-    group_chat_id = -1002204618850  # TODO
-    message_thread_id = 2  # TODO
+    group_chat_id = os.getenv("GROUP_CHAT_ID")
+    message_thread_id = os.getenv("MESSAGE_THREAD_ID")
     language = data.get("language", "ru")
 
     if user_responses:
