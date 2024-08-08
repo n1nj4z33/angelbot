@@ -1,0 +1,28 @@
+[master]
+ignore-paths =
+    env
+
+[messages control]
+disable =
+    fixme,
+    invalid-name,
+    missing-docstring,
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
+    too-many-instance-attributes,
+    too-many-locals,
+    no-else-return,
+    too-many-arguments,
+    too-many-nested-blocks,
+    too-many-branches,
+    logging-fstring-interpolation,
+    too-many-public-methods,
+    redefined-outer-name
+
+[format]
+max-line-length=100
+
+[reports]
+output-format=colorized
