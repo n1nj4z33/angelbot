@@ -1,3 +1,18 @@
 [
-    "test"
+    "What symptoms are currently bothering you? For how long?",
+    "Is your stool daily? How many times a day?",
+    "Do you have any chronic or hereditary diseases?",
+    "Do your parents/grandparents have any history of cancer? If yes, what kind?",
+    "Do you have a coating on your tongue in the morning (check immediately after waking up, before drinking water or eating)? What color? You can send a photo.",
+    "How often do you catch colds? How quickly do they pass? What treatment method do you usually use (home remedies or pharmacy medications)?",
+    "Have you had any serious illnesses or undergone treatments in the last 3 years?",
+    "How would you describe the state of your libido? Has it decreased/increased in recent years?",
+    "How would you describe the condition of your hair? If there are issues, bald spots (which part of the head?) - how long have they been present?",
+    "Do you have any of the following skin manifestations? If yes, specify where on the body. (acne, redness, dryness (note if the entire skin is dry or only in specific areas), cracks (where?), other)",
+    "Do you experience any of the following? How often? (belching, heartburn, bloating (gas), heaviness/pain in the abdomen, swelling, nausea, diarrhea, strong (unpleasant) body odor, night sweats, hands, feet, and body feel cold without any reason, rapid heartbeat, high blood pressure)",
+    "Are you currently taking any vitamins, probiotics, supplements, or medications?",
+    "Do you have any allergies (skin reactions, breathing problems, etc.)? If yes, are they constant or seasonal, and where on the body do they appear? How do you usually treat them?",
+    "Allergies to food? Food intolerances?",
+    "Have you had COVID-19? If yes, how was it confirmed? How were you treated? How did you handle it?",
+    "Have you been vaccinated against COVID-19? If yes, when and which one? How did you handle it?"
 ]

@@ -141,13 +141,13 @@ async def send_summary(message: Message, state: FSMContext):
             inline_keyboard=[
                 [
                     InlineKeyboardButton(
-                        text="Редактировать ответы" if language == "ru" else "Edit Responses",
+                        text="📝 Редактировать ответы" if language == "ru" else "Edit Responses",
                         callback_data="edit_responses",
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        text="Переслать результаты" if language == "ru" else "Forward Results",
+                        text="✅ Переслать результаты" if language == "ru" else "Forward Results",
                         callback_data="forward_results",
                     )
                 ],
