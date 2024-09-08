@@ -9,14 +9,17 @@
         font-family: Arial, sans-serif;
         padding: 10px;
         background: #f7f7f7;
+        margin: 0;
     }
     .container {
         width: 100%;
         max-width: 400px; /* Ширина подходящая для большинства мобильных устройств */
-        margin: 0 auto;
+        margin: auto;
         background: white;
         padding: 10px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        position: relative;
+        min-height: 100vh; /* Минимальная высота контейнера */
     }
     .form-group {
         margin-bottom: 10px;
@@ -41,9 +44,14 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        margin-top: 20px; /* Добавлен отступ сверху */
     }
     button:hover {
         background-color: #3b5bdb;
+    }
+    .footer {
+        height: 20px; /* Высота подвала для прокрутки */
+        padding-bottom: 60px; /* Дополнительное пространство снизу */
     }
 </style>
 </head>
@@ -161,8 +169,11 @@ document.getElementById('surveyForm').addEventListener('submit', function(event)
 document.querySelectorAll('input, textarea').forEach(element => {
     element.addEventListener('focus', () => {
         setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
+            const elementRect = element.getBoundingClientRect();
+            const absoluteElementTop = elementRect.top + window.pageYOffset;
+            const middle = absoluteElementTop - (window.innerHeight / 2);
+            window.scrollTo({ top: middle, behavior: 'smooth' });
+        }, 500); // Увеличена задержка для более стабильной работы
     });
 });
 </script>
