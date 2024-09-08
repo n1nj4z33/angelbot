@@ -88,16 +88,33 @@ async def process_survey_callback(callback_query: CallbackQuery, state: FSMConte
 
 async def send_next_question(message: Message, state: FSMContext):
     data = await state.get_data()
-    user_responses = data.get("user_responses", [])
-    survey_type = data.get("survey_type")
-    language = data.get("language", "ru")
+    user_responses = data.get('user_responses', [])
+    survey_type = data.get('survey_type')
+    language = data.get('language', 'ru')
 
     current_question = len(user_responses)
+    total_questions = len(questions_data[language][survey_type])
 
-    if current_question < len(questions_data[language][survey_type]):
-        await message.answer(questions_data[language][survey_type][current_question])
+    if current_question < total_questions:
+        question_text = questions_data[language][survey_type][current_question]
+        
+        # Add "Question X of Y" information
+        question_header = f"Вопрос {current_question + 1} из {total_questions}" if language == "ru" else f"Question {current_question + 1} of {total_questions}"
+
+        # Check if this is the gastrointestinal tract survey and use the specific keyboard
+        if survey_type == "gastrointestinal_tract":
+            keyboard = kb.gastrointestinal_tract_keyboard_ru if language == "ru" else kb.gastrointestinal_tract_keyboard_en
+            await message.answer(f"{question_header}\n\n{question_text}", reply_markup=keyboard)
+
+        elif survey_type == "adrenal_glands":
+            keyboard = kb.adrenal_glands_keyboard_ru if language == "ru" else kb.adrenal_glands_keyboard_en
+            await message.answer(f"{question_header}\n\n{question_text}", reply_markup=keyboard)
+
+        else:
+            await message.answer(f"{question_header}\n\n{question_text}")
     else:
         await send_summary(message, state)
+
 
 
 @router.message(SurveyStates.waiting_for_answer)
@@ -121,6 +138,43 @@ async def handle_answer(message: Message, state: FSMContext):
         await send_summary(message, state)
 
 
+@router.callback_query(F.data.in_({"0", "1", "4", "8"}))
+async def handle_gastrointestinal_answer(callback_query: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    user_responses = data.get('user_responses', [])
+    survey_type = data.get('survey_type')
+    language = data.get('language', 'ru')
+
+    if survey_type == "gastrointestinal_tract":
+        # Store the user's selected response value
+        user_responses.append({"question": questions_data[language][survey_type][len(user_responses)], "answer": callback_query.data})
+        await state.update_data(user_responses=user_responses)
+        await callback_query.answer()
+        await send_next_question(callback_query.message, state)
+    else:
+        await callback_query.answer("Unexpected error.")
+
+
+
+@router.callback_query(F.data.in_({"0", "1", "4", "8"}))
+async def handle_adrenal_glands_answer(callback_query: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    user_responses = data.get('user_responses', [])
+    survey_type = data.get('survey_type')
+    language = data.get('language', 'ru')
+
+    if survey_type in {"gastrointestinal_tract", "adrenal_glands"}:
+        # Store the user's selected response value
+        user_responses.append({"question": questions_data[language][survey_type][len(user_responses)], "answer": callback_query.data})
+        await state.update_data(user_responses=user_responses)
+        await callback_query.answer()
+        await send_next_question(callback_query.message, state)
+    else:
+        await callback_query.answer("Unexpected error.")
+
+
+
+
 async def send_summary(message: Message, state: FSMContext):
     data = await state.get_data()
     user_responses = data.get("user_responses", [])
@@ -132,22 +186,22 @@ async def send_summary(message: Message, state: FSMContext):
 
         for i, response in enumerate(user_responses):
             summary += (
-                f"{i+1}. {response['question']}\nОтвет: {response['answer']}\n\n"
+                f"Вопрос {i+1}: {response['question']}\nОтвет: {response['answer']}\n\n"
                 if language == "ru"
-                else f"{i+1}. {response['question']}\nAnswer: {response['answer']}\n\n"
+                else f"Question {i+1}: {response['question']}\nAnswer: {response['answer']}\n\n"
             )
 
         save_button = InlineKeyboardMarkup(
             inline_keyboard=[
                 [
                     InlineKeyboardButton(
-                        text="📝 Редактировать ответы" if language == "ru" else "Edit Responses",
+                        text="📝 Редактировать ответы" if language == "ru" else "📝 Edit Responses",
                         callback_data="edit_responses",
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        text="✅ Переслать результаты" if language == "ru" else "Forward Results",
+                        text="✅ Отправить результаты" if language == "ru" else "✅ Forward Results",
                         callback_data="forward_results",
                     )
                 ],

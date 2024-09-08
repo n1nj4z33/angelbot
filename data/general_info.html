@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Опросник</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .container {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"], input[type="date"], input[type="number"], select {
+        width: calc(100% - 22px);
+        padding: 10px;
+    }
+    textarea {
+        width: calc(100% - 22px);
+        height: 100px;
+        padding: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Опросник</h1>
+    <form id="surveyForm">
+        <div class="form-group">
+            <label for="birthdate">Дата рождения:</label>
+            <input type="date" id="birthdate" name="birthdate">
+        </div>
+        <div class="form-group">
+            <label for="height">Рост:</label>
+            <input type="number" id="height" name="height" placeholder="Рост в сантиметрах">
+        </div>
+        <div class="form-group">
+            <label for="weight">Вес:</label>
+            <input type="number" id="weight" name="weight" placeholder="Вес в килограммах">
+        </div>
+        <div class="form-group">
+            <label for="waist">Окружность талии:</label>
+            <input type="number" id="waist" name="waist" placeholder="Окружность талии в сантиметрах">
+        </div>
+        <div class="form-group">
+            <label for="pulse">Пульс в покое:</label>
+            <input type="number" id="pulse" name="pulse" placeholder="Пульс (удары в минуту)">
+        </div>
+        <div class="form-group">
+            <label for="maritalStatus">Семейное положение:</label>
+            <select id="maritalStatus" name="maritalStatus">
+                <option value="single">Не женат/не замужем</option>
+                <option value="married">Женат/Замужем</option>
+                <option value="divorced">Разведен(а)</option>
+                <option value="widowed">Вдовец/Вдова</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="children">Есть ли дети? Сколько, возраст?</label>
+            <input type="text" id="children" name="children" placeholder="Например: 2, 5 и 8 лет">
+        </div>
+        <div class="form-group">
+            <label for="mainGoal">Основная проблема или цель:</label>
+            <textarea id="mainGoal" name="mainGoal"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="workInfo">Работаете ли? Если да - в офисе или дома? Работа сидячая? По какому графику?</label>
+            <textarea id="workInfo" name="workInfo"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="vacation">Как часто бываете в отпуске? Как проводите отпуск?</label>
+            <textarea id="vacation" name="vacation"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="freeTime">Сколько свободного времени у Вас в течение дня?</label>
+            <textarea id="freeTime" name="freeTime"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="weekends">Как проводите выходные?</label>
+            <textarea id="weekends" name="weekends"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="sleepTime">Во сколько обычно ложитесь спать?</label>
+            <input type="text" id="sleepTime" name="sleepTime" placeholder="Например: 23:00">
+        </div>
+        <div class="form-group">
+            <label for="wakeupTime">Во сколько обычно просыпаетесь?</label>
+            <input type="text" id="wakeupTime" name="wakeupTime" placeholder="Например: 7:00">
+        </div>
+        <div class="form-group">
+            <label for="roomTemperature">Какая температура в комнате во время сна?</label>
+            <input type="number" id="roomTemperature" name="roomTemperature" placeholder="Температура в градусах Цельсия">
+        </div>
+        <div class="form-group">
+            <label for="sleepIssues">Бывает ли у Вас нарушение сна?</label>
+            <textarea id="sleepIssues" name="sleepIssues"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="walking">Гуляете ли каждый день на свежем воздухе?</label>
+            <textarea id="walking" name="walking"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="physicalActivity">Есть ли какая-то физическая активность?</label>
+            <textarea id="physicalActivity" name="physicalActivity"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="preSleepRoutine">Пользуетесь ли телефоном/ноутбуком/смотрите телевизор перед сном?</label>
+            <input type="text" id="preSleepRoutine" name="preSleepRoutine">
+        </div>
+        <div class="form-group">
+            <label for="stressLevel">Оцените уровень стресса (0-10):</label>
+            <input type="number" id="stressLevel" name="stressLevel" min="0" max="10">
+        </div>
+        <div class="form-group">
+            <label for="fatigue">Бывает ли у Вас ощущение усталости?</label>
+            <textarea id="fatigue" name="fatigue"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="nutritionTraining">Проходили ли курсы по питанию? Какие?</label>
+            <textarea id="nutritionTraining" name="nutritionTraining"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="meditation">Практикуете ли йогу, медитации, дыхательные практики?</label>
+            <input type="text" id="meditation" name="meditation">
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('surveyForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Форма отправлена! Спасибо за ваше время.');
+    // Здесь можно добавить код для отправки данных формы на сервер
+});
+</script>
+
+</body>
+</html>

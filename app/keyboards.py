@@ -44,3 +44,42 @@ survey_keyboard_en = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+gastrointestinal_tract_keyboard_ru = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Нет или редко", callback_data="0")],
+        [InlineKeyboardButton(text="Иногда", callback_data="1")],
+        [InlineKeyboardButton(text="Часто", callback_data="4")],
+        [InlineKeyboardButton(text="Очень часто", callback_data="8")],
+    ]
+)
+
+gastrointestinal_tract_keyboard_en = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="No or Rarely", callback_data="0")],
+        [InlineKeyboardButton(text="Sometimes", callback_data="1")],
+        [InlineKeyboardButton(text="Often", callback_data="4")],
+        [InlineKeyboardButton(text="Very Often", callback_data="8")],
+    ]
+)
+
+
+# New keyboards for the adrenal glands survey
+adrenal_glands_keyboard_ru = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Нет или редко", callback_data="0")],
+        [InlineKeyboardButton(text="Иногда", callback_data="1")],
+        [InlineKeyboardButton(text="Часто", callback_data="4")],
+        [InlineKeyboardButton(text="Очень часто", callback_data="8")],
+    ]
+)
+
+adrenal_glands_keyboard_en = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="No or Rarely", callback_data="0")],
+        [InlineKeyboardButton(text="Sometimes", callback_data="1")],
+        [InlineKeyboardButton(text="Often", callback_data="4")],
+        [InlineKeyboardButton(text="Very Often", callback_data="8")],
+    ]
+)
