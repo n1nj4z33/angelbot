@@ -1,191 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Опросник в Telegram</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 10px;
-        background: #f7f7f7;
-        margin: 0;
-    }
-    .container {
-        width: 100%;
-        max-width: 400px; /* Ширина подходящая для большинства мобильных устройств */
-        margin: auto;
-        background: white;
-        padding: 10px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        position: relative;
-        min-height: 100vh; /* Минимальная высота контейнера */
-    }
-    .form-group {
-        margin-bottom: 10px;
-    }
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-    }
-    input[type="text"], input[type="number"], select, textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    input[type="date"] {
-        -webkit-appearance: none;  /* Отключает стандартный стиль iOS */
-        background-color: white;
-        border: 1px solid #ccc;
-        padding: 8px;
-        border-radius: 4px;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        background-color: #5c7cfa;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px; /* Добавлен отступ сверху */
-    }
-    button:hover {
-        background-color: #3b5bdb;
-    }
-    .footer {
-        height: 20px; /* Высота подвала для прокрутки */
-        padding-bottom: 60px; /* Дополнительное пространство снизу */
-    }
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Опросник</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1 style="font-size: 18px; text-align: center;">Опросник</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Опросник</h1>
     <form id="surveyForm">
-        <div class="form-group">
-            <label for="birthdate">Дата рождения:</label>
-            <input type="date" id="birthdate" name="birthdate">
+        <div class="mb-3">
+            <label for="birthdate" class="form-label">Дата рождения:</label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate">
         </div>
-        <div class="form-group">
-            <label for="height">Рост:</label>
-            <input type="number" id="height" name="height" placeholder="Рост в сантиметрах">
+        <div class="mb-3">
+            <label for="height" class="form-label">Рост:</label>
+            <input type="number" class="form-control" id="height" name="height" placeholder="Рост в сантиметрах">
         </div>
-        <div class="form-group">
-            <label for="weight">Вес:</label>
-            <input type="number" id="weight" name="weight" placeholder="Вес в килограммах">
+        <div class="mb-3">
+            <label for="weight" class="form-label">Вес:</label>
+            <input type="number" class="form-control" id="weight" name="weight" placeholder="Вес в килограммах">
         </div>
-        <div class="form-group">
-            <label for="waist">Окружность талии:</label>
-            <input type="number" id="waist" name="waist" placeholder="Окружность талии в сантиметрах">
+        <div class="mb-3">
+            <label for="waist" class="form-label">Окружность талии:</label>
+            <input type="number" class="form-control" id="waist" name="waist" placeholder="Окружность талии в сантиметрах">
         </div>
-        <div class="form-group">
-            <label for="pulse">Пульс в покое:</label>
-            <input type="number" id="pulse" name="pulse" placeholder="Пульс (удары в минуту)">
+        <div class="mb-3">
+            <label for="pulse" class="form-label">Пульс в покое:</label>
+            <input type="number" class="form-control" id="pulse" name="pulse" placeholder="Пульс (удары в минуту)">
         </div>
-        <div class="form-group">
-            <label for="maritalStatus">Семейное положение:</label>
-            <select id="maritalStatus" name="maritalStatus">
+        <div class="mb-3">
+            <label for="maritalStatus" class="form-label">Семейное положение:</label>
+            <select class="form-select" id="maritalStatus" name="maritalStatus">
+                <option selected>Выберите...</option>
                 <option value="single">Не женат/не замужем</option>
                 <option value="married">Женат/Замужем</option>
                 <option value="divorced">Разведен(а)</option>
                 <option value="widowed">Вдовец/Вдова</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="children">Есть ли дети? Сколько, возраст?</label>
-            <input type="text" id="children" name="children" placeholder="Например: 2, 5 и 8 лет">
+        <div class="mb-3">
+            <label for="children" class="form-label">Есть ли дети? Сколько, возраст?</label>
+            <input type="text" class="form-control" id="children" name="children" placeholder="Например: 2, 5 и 8 лет">
         </div>
-        <div class="form-group">
-            <label for="mainGoal">Основная проблема или цель:</label>
-            <textarea id="mainGoal" name="mainGoal"></textarea>
+        <div class="mb-3">
+            <label for="mainGoal" class="form-label">Основная проблема или цель:</label>
+            <textarea class="form-control" id="mainGoal" name="mainGoal"></textarea>
         </div>
-        <div class="form-group">
-            <label for="workInfo">Работаете ли? Если да - в офисе или дома? Работа сидячая? По какому графику?</label>
-            <textarea id="workInfo" name="workInfo"></textarea>
+        <div class="mb-3">
+            <label for="workInfo" class="form-label">Работаете ли? Если да - в офисе или дома? Работа сидячая? По какому графику?</label>
+            <textarea class="form-control" id="workInfo" name="workInfo"></textarea>
         </div>
-        <div class="form-group">
-            <label for="vacation">Как часто бываете в отпуске? Как проводите отпуск?</label>
-            <textarea id="vacation" name="vacation"></textarea>
+        <div class="mb-3">
+            <label for="vacation" class="form-label">Как часто бываете в отпуске? Как проводите отпуск?</label>
+            <textarea class="form-control" id="vacation" name="vacation"></textarea>
         </div>
-        <div class="form-group">
-            <label for="freeTime">Сколько свободного времени у Вас в течение дня?</label>
-            <textarea id="freeTime" name="freeTime"></textarea>
+        <div class="mb-3">
+            <label for="freeTime" class="form-label">Сколько свободного от работы/обучения/бытовых забот времени у Вас в течение дня (время отдыха)?</label>
+            <textarea class="form-control" id="freeTime" name="freeTime"></textarea>
         </div>
-        <div class="form-group">
-            <label for="weekends">Как проводите выходные?</label>
-            <textarea id="weekends" name="weekends"></textarea>
+        <div class="mb-3">
+            <label for="weekends" class="form-label">Как проводите выходные?</label>
+            <textarea class="form-control" id="weekends" name="weekends"></textarea>
         </div>
-        <div class="form-group">
-            <label for="sleepTime">Во сколько обычно ложитесь спать?</label>
-            <input type="text" id="sleepTime" name="sleepTime" placeholder="Например: 23:00">
+        <div class="mb-3">
+            <label for="sleepTime" class="form-label">Во сколько обычно ложитесь спать?</label>
+            <input type="text" class="form-control" id="sleepTime" name="sleepTime" placeholder="Например: 23:00">
         </div>
-        <div class="form-group">
-            <label for="wakeupTime">Во сколько обычно просыпаетесь?</label>
-            <input type="text" id="wakeupTime" name="wakeupTime" placeholder="Например: 7:00">
+        <div class="mb-3">
+            <label for="wakeupTime" class="form-label">Во сколько обычно просыпаетесь?</label>
+            <input type="text" class="form-control" id="wakeupTime" name="wakeupTime" placeholder="Например: 7:00">
         </div>
-        <div class="form-group">
-            <label for="roomTemperature">Какая температура в комнате во время сна?</label>
-            <input type="number" id="roomTemperature" name="roomTemperature" placeholder="Температура в градусах Цельсия">
+        <div class="mb-3">
+            <label for="roomTemperature" class="form-label">Какая температура в комнате во время сна?</label>
+            <input type="number" class="form-control" id="roomTemperature" name="roomTemperature" placeholder="Температура в градусах Цельсия">
         </div>
-        <div class="form-group">
-            <label for="sleepIssues">Бывает ли у Вас нарушение сна?</label>
-            <textarea id="sleepIssues" name="sleepIssues"></textarea>
+        <div class="mb-3">
+            <label for="sleepIssues" class="form-label">Бывает ли у Вас нарушение сна?</label>
+            <textarea class="form-control" id="sleepIssues" name="sleepIssues"></textarea>
         </div>
-        <div class="form-group">
-            <label for="walking">Гуляете ли каждый день на свежем воздухе?</label>
-            <textarea id="walking" name="walking"></textarea>
+        <div class="mb-3">
+            <label for="walking" class="form-label">Гуляете ли каждый день на свежем воздухе?</label>
+            <textarea class="form-control" id="walking" name="walking"></textarea>
         </div>
-        <div class="form-group">
-            <label for="physicalActivity">Есть ли какая-то физическая активность?</label>
-            <textarea id="physicalActivity" name="physicalActivity"></textarea>
+        <div class="mb-3">
+            <label for="physicalActivity" class="form-label">Есть ли какая-то физическая активность?</label>
+            <textarea class="form-control" id="physicalActivity" name="physicalActivity"></textarea>
         </div>
-        <div class="form-group">
-            <label for="preSleepRoutine">Пользуетесь ли телефоном/ноутбуком/смотрите телевизор перед сном?</label>
-            <input type="text" id="preSleepRoutine" name="preSleepRoutine">
+        <div class="mb-3">
+            <label for="preSleepRoutine" class="form-label">Пользуетесь ли телефоном/ноутбуком/смотрите телевизор перед сном?</label>
+            <input type="text" class="form-control" id="preSleepRoutine" name="preSleepRoutine">
         </div>
-        <div class="form-group">
-            <label for="stressLevel">Оцените уровень стресса (0-10):</label>
-            <input type="number" id="stressLevel" name="stressLevel" min="0" max="10">
+        <div class="mb-3">
+            <label for="stressLevel" class="form-label">Оцените по 10-бальной шкале уровень стресса в Вашей жизни, где 10 - максимальный уровень, 0 - отсутствие стресса.</label>
+            <input type="number" class="form-control" id="stressLevel" name="stressLevel" min="0" max="10">
         </div>
-        <div class="form-group">
-            <label for="fatigue">Бывает ли у Вас ощущение усталости?</label>
-            <textarea id="fatigue" name="fatigue"></textarea>
+        <div class="mb-3">
+            <label for="fatigue" class="form-label">Бывает ли у Вас ощущение повышенной утомляемости, усталости, отсутствия сил?</label>
+            <textarea class="form-control" id="fatigue" name="fatigue"></textarea>
         </div>
-        <div class="form-group">
-            <label for="nutritionTraining">Проходили ли курсы по питанию? Какие?</label>
-            <textarea id="nutritionTraining" name="nutritionTraining"></textarea>
+        <div class="mb-3">
+            <label for="nutritionTraining" class="form-label">Проходили ли до этого какие-то курсы, обучения по питанию? Диеты? Если да - какие? От чего наблюдается желаемый эффект?</label>
+            <textarea class="form-control" id="nutritionTraining" name="nutritionTraining"></textarea>
         </div>
-        <div class="form-group">
-            <label for="meditation">Практикуете ли йогу, медитации, дыхательные практики?</label>
-            <input type="text" id="meditation" name="meditation">
+        <div class="mb-3">
+            <label for="meditation" class="form-label">Практикуете ли йогу, медитации, дыхательные практики?</label>
+            <input type="text" class="form-control" id="meditation" name="meditation">
         </div>
-        <button type="submit">Отправить</button>
+        <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
 </div>
-
-<script>
-document.getElementById('surveyForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Форма отправлена! Спасибо за ваше время.');
-});
-
-document.querySelectorAll('input, textarea').forEach(element => {
-    element.addEventListener('focus', () => {
-        setTimeout(() => {
-            const elementRect = element.getBoundingClientRect();
-            const absoluteElementTop = elementRect.top + window.pageYOffset;
-            const middle = absoluteElementTop - (window.innerHeight / 2);
-            window.scrollTo({ top: middle, behavior: 'smooth' });
-        }, 500); // Увеличена задержка для более стабильной работы
-    });
-});
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
