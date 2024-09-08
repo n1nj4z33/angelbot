@@ -10,7 +10,10 @@ language_selection_keyboard = InlineKeyboardMarkup(
 survey_keyboard_ru = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="⚕️ Общие сведения", callback_data="general_info")
+            InlineKeyboardButton(
+                text="⚕️ Общие сведения", 
+                web_app=WebAppInfo(url="https://n1nj4z33.github.io/angelbot/general_info_ru.html")
+            )
         ],
         [
             InlineKeyboardButton(text="🍔 Питание", callback_data="nutrition"),
@@ -29,8 +32,8 @@ survey_keyboard_en = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="⚕️ General Information", 
-                web_app=WebAppInfo(url="https://n1nj4z33.github.io/angelbot/index.html")
+                text="⚕️ General Information",
+                web_app=WebAppInfo(url="https://n1nj4z33.github.io/angelbot/genenal_info_en.html")
             )
         ],
         [

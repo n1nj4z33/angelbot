@@ -2,48 +2,54 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Опросник</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опросник в Telegram</title>
 <style>
     body {
         font-family: Arial, sans-serif;
-        padding: 20px;
+        padding: 10px;
+        background: #f7f7f7;
     }
     .container {
-        width: 800px;
+        width: 100%;
+        max-width: 400px; /* Ширина подходящая для большинства мобильных устройств */
         margin: 0 auto;
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
     label {
         display: block;
         margin-bottom: 5px;
+        font-size: 14px;
     }
-    input[type="text"], input[type="date"], input[type="number"], select {
-        width: calc(100% - 22px);
-        padding: 10px;
-    }
-    textarea {
-        width: calc(100% - 22px);
-        height: 100px;
-        padding: 10px;
+    input[type="text"], input[type="date"], input[type="number"], select, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Чтобы padding не влиял на ширину элемента */
     }
     button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
+        width: 100%;
+        padding: 10px;
+        background-color: #5c7cfa;
         color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
     }
     button:hover {
-        background-color: #45a049;
+        background-color: #3b5bdb;
     }
 </style>
 </head>
 <body>
 <div class="container">
-    <h1>Опросник</h1>
+    <h1 style="font-size: 18px; text-align: center;">Опросник</h1>
     <form id="surveyForm">
         <div class="form-group">
             <label for="birthdate">Дата рождения:</label>
@@ -150,7 +156,7 @@
 document.getElementById('surveyForm').addEventListener('submit', function(event) {
     event.preventDefault();
     alert('Форма отправлена! Спасибо за ваше время.');
-    // Здесь можно добавить код для отправки данных формы на сервер
+    // Здесь можно добавить код для отправки данных формы на сервер или в Telegram
 });
 </script>
 
