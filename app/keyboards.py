@@ -1,4 +1,4 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 language_selection_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -28,7 +28,10 @@ survey_keyboard_ru = InlineKeyboardMarkup(
 survey_keyboard_en = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="⚕️ General Information", callback_data="general_info")
+            InlineKeyboardButton(
+                text="⚕️ General Information", 
+                web_app=WebAppInfo(url="https://n1nj4z33.github.io/angelbot/index.html")
+            )
         ],
         [
             InlineKeyboardButton(text="🍔 Nutrition", callback_data="nutrition"),
