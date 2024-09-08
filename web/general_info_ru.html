@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Опросник в Telegram</title>
 <style>
     body {
@@ -31,7 +31,7 @@
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        box-sizing: border-box; /* Чтобы padding не влиял на ширину элемента */
+        box-sizing: border-box;
     }
     button {
         width: 100%;
@@ -156,7 +156,14 @@
 document.getElementById('surveyForm').addEventListener('submit', function(event) {
     event.preventDefault();
     alert('Форма отправлена! Спасибо за ваше время.');
-    // Здесь можно добавить код для отправки данных формы на сервер или в Telegram
+});
+
+document.querySelectorAll('input, textarea').forEach(element => {
+    element.addEventListener('focus', () => {
+        setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    });
 });
 </script>
 
